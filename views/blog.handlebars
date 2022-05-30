@@ -1,0 +1,41 @@
+<div class="blog-card">
+  <div class="blog-card-header">
+    {{blog.title}}
+  </div>
+  <div class="card-body">
+    <p>
+      {{blog.description}}
+    </p>
+  </div>
+</div>
+
+{{#if blog.comments.length}}
+  {{#each blog.comments as |comment|}}
+    <div class="blog-card">
+      <div class="blog-card-header">
+        Comment
+      </div>
+      <div class="card-body">
+        <p>
+          {{comment.comment}}
+        </p>
+      </div>
+    </div>
+  {{/each}}
+{{/if}}
+
+
+<form class="form comment-post" id='comment-form'>
+      <div class="form-group">
+        <label for="comment-title"> </label>
+      </div>
+      <div class="form-group">
+        <label for="comment-details"> Comment </label>
+        <input class="form-input" type="text" id="comment-details-keyed" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit"> Submit </button>
+      </div>
+    </form>
+
+<script src="/js/blog.js"></script>

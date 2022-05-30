@@ -11,8 +11,8 @@ Comments.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    comments: {
-      type: DataTypes.STRING,
+    comment: {
+      type: DataTypes.TEXT,
     },
     blog_id:{
         type: DataTypes.INTEGER,
