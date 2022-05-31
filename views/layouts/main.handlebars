@@ -10,20 +10,23 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
+  <div>
     <header>
       <nav class="display-flex justify-space-between align-left p-2" > 
          <div >
-            <a href="/" class='mx-2 px-6'> Home </a>
-            <a href="/dashboard" class='mx-2 px-6' >Dashboard</a>
+            <a href="/" class='mx-2 px-6 nav-a'> Home </a>
+            <a href="/dashboard" class='mx-2 px-6 nav-a' >Dashboard</a>
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
-              <button class="no-button" id="logout" class='mx-2 px-6'>Logout</button>
+              <button class="no-button" id="logout" class='mx-2 px-6 nav-a'>Logout</button>
             {{else}}
-              <a href="/login" class='mx-2 px-6' >Login</a>
+              <a href="/login" class='mx-2 px-6 nav-a' >Login</a>
             {{/if}}
         </div>
       </nav>
+      <div class = 'align-left'>
+        <h1> The Tech Blog </h1>
+    </div>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

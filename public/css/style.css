@@ -20,11 +20,16 @@ body {
 }
 
 header {
-  padding: 40px;
+  padding: 30px;
   text-align: center;
   background: var(--primary);
   color: var(--secondary);
   border-bottom-style: solid;
+}
+
+h1 {
+  size: 25rem;
+  text-shadow: 4px 4px grey;
 }
 
 main {
@@ -34,15 +39,27 @@ main {
 }
 
 nav {
+  margin-left: -1%;
+  margin-top: -1%;
   display: flex;
-  background-color: var(--secondary);
+  text-decoration: none;
+  color:var(--secondary);
+}
+
+.nav-a {
+  color:var(--secondary);
+  font-size: 1.5rem;
 }
 
 .no-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
   border: none;
-  background-color:var(--secondary);
-  color: #1b89bc;
-  
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-size: 1.5rem;
+  color:var(--secondary);
 }
 
 /* CARDS */
@@ -50,7 +67,7 @@ nav {
   margin: 20px;
   flex: 0 1 300px;
   padding: 5px;
-  width: 35%;
+  width: 100%;
   min-height: 100%;
   min-width: 35%;
   border: 3px solid var(--primary);
