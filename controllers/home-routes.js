@@ -33,17 +33,22 @@ router.get('/blog/post',withAuth, (req,res)=> {
 router.get('/blog/:id', withAuth, async (req, res) => {
  
   try {
+    console.log('Retrieve blog comments');
     const blogData = await Blog.findByPk(req.params.id,{
         include : [
-          {model: Comments,
-          include: [User]}]
+          {model: Comments, attributes: ['comment','commenter_id'],
+        include: [{model: User, attributes: ['id','name']}, ]
+        }]
   
     });
-
+  
     console.log('++ In comment vs update blog ++ ');
-
+    
     const blog = blogData.get({ plain: true });
     console.log(blog);
+
+    const user_comment = blog.comments;
+    console.log ('unpacking', user_comment);
 
     if (blog.author_id == req.session.user_id) {
       res.render('blogedit', {

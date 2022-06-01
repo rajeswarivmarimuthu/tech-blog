@@ -20,23 +20,28 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: column;
   padding: 30px;
-  text-align: center;
+  text-align: left;
   background: var(--primary);
   color: var(--secondary);
   border-bottom-style: solid;
 }
 
 h1 {
+  padding: 2rem;
   size: 25rem;
   text-shadow: 4px 4px grey;
 }
+
 
 main {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
 }
+
 
 nav {
   margin-left: -1%;
@@ -62,31 +67,31 @@ nav {
   color:var(--secondary);
 }
 
-/* CARDS */
+
+/* LAYOUT */
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: center;
+}
+
+
+/* Blog CARDS */
 .blog-card {
   margin: 20px;
-  flex: 0 1 300px;
+  flex: 0 1 100px;
   padding: 5px;
   width: 100%;
-  min-height: 100%;
-  min-width: 35%;
+  height: fit-content;
+  min-height: fit-content;
+  min-width: fit-content;
   border: 3px solid var(--primary);
   border-radius: var(--border-radius);
   border-style: solid;
   border-width: medium;
   background-color: var(--light);
   color: var(--dark);
-}
-
-.card-header {
-  color: var(--light);
-  margin: 0;
-  background-color: var(--secondary);
-  padding: 0.625rem;
-  border: 3px solid var(--primary);
-  border-radius: var(--border-radius);
-  border-style: solid;
-  border-width: medium;
 }
 
 .blog-card-header {
@@ -102,14 +107,7 @@ nav {
   padding: 2.5%;
   font-size: 1.4rem;
   text-align: center;
-}
-
-/* LAYOUT */
-.container {
-  display: flex;
-  flex-flow: column wrap;
-  align-content: flex-start;
-  align-items: center;
+  height: fit-content;
 }
 
 .blog-card-anchor {
@@ -121,6 +119,7 @@ nav {
   text-decoration: none;
 }
 
+
 a.button {
   -webkit-appearance: button;
   -moz-appearance: button;
@@ -129,3 +128,27 @@ a.button {
   text-decoration: none;
   color: initial;
 }
+
+/* Styling forms */
+.textarea {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+  background-color: white;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  align-items: center;
+}
+

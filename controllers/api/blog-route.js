@@ -81,16 +81,16 @@ router.delete('/:id', withAuth, async (req, res) => {
   // router to add comments to a BLOG
 router.post('/:id/comment',withAuth, async(req,res) => {
   try {
-  
-    const commentInput = {
-      comment :req.body.description,
-      blog_id: req.body.blog_id,
-      commenter_id: req.session.user_id
-    }  
+    if (!req.body.description) {
+      const commentInput = {
+        comment :req.body.description,
+        blog_id: req.body.blog_id,
+        commenter_id: req.session.user_id
+      }  
+      const commentData = await Comments.create(commentInput);
 
-    const commentData = await Comments.create(commentInput);
-
-    res.status(200).json(commentData);
+      res.status(200).json(commentData);
+    }
   }
   catch (err) {
     res.status(500).json(err);
