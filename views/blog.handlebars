@@ -1,6 +1,7 @@
 <div class="blog-card">
-  <div class="blog-card-header">
-    {{blog.title}}
+  <div class="blog-card-header title-header">
+    <div> {{blog.title}} </div>
+    <div> Posted by {{ blog.user.name}} {{format_date blog.date_created}} </div>
   </div>
   <div class="card-body">
     <p>
@@ -10,14 +11,21 @@
 </div>
 
 {{#if blog.comments.length}}
+  <div>
+    <h2>Comments</h2>
+    <hr class="solid">
+  </div>
+{{/if}}
+
+{{#if blog.comments.length}}
   {{#each blog.comments as |comment|}}
     <div class="blog-card">
-      <div class="blog-card-header">
-        Comment
-      </div>
       <div class="card-body">
         <p>
           {{comment.comment}}
+        </p>
+        <p>
+          - {{comment.user.name}}, {{format_date comment.date_created}}
         </p>
       </div>
     </div>
@@ -25,16 +33,23 @@
 {{/if}}
 
 
+{{#if blog.comments.length}}
+  <div>
+    <h2>Have Thoughts!! Add it here!!! </h2>
+    <hr class="solid">
+  </div>
+{{/if}}
+
 <form class="form comment-post" id='comment-form'>
       <div class="form-group">
         <label for="comment-title"> </label>
       </div>
       <div class="form-group">
-        <label for="comment-details"> Comment </label>
-        <input class="form-input" type="text" id="comment-details-keyed" />
+        {{!-- <label for="comment-details"> Comment </label> --}}
+        <input class="form-input" type="text" id="comment-details-keyed" placeholder="add your comments...." />
       </div>
-      <div class="form-group items-center">
-        <button class="btn btn-primary" type="submit"> Submit </button>
+      <div class="form-group button-group">
+        <button class="btn pst-btn" type="submit"> Submit </button>
       </div>
     </form>
 

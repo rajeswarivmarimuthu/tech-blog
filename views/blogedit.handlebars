@@ -5,15 +5,15 @@
     <form class="form blog-post">
       <div class="form-group">
         <label for="blog-title"> Title </label>
-        <input class="form-input" type="text" id="blog-title-keyed" value= {{blog.title}} />
+        <input class="form-input" type="text" id="blog-title-keyed" value= "{{blog.title}}"/>
       </div>
       <div class="form-group">
         <label for="blog-details"> Description </label>
-        <input class="form-input" type="text" id="blog-details-keyed" value= {{blog.description}} />
+        <textarea class="form-input" type="text" id="blog-details-keyed">{{blog.description}}</textarea>
       </div>
       <div class="form-group row button-group">
-        <button class="btn btn-primary blg-btn blog-update" type="submit"> Update </button>
-        <button class="btn btn-primary blg-btn blog-delete" type="submit"> Delete </button>
+        <button class="btn pst-btn blg-btn blog-update" type="submit"> Update </button>
+        <button class="btn pst-btn blg-btn blog-delete" type="submit"> Delete </button>
       </div>
     </form>
   </div>

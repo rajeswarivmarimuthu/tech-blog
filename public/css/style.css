@@ -33,8 +33,15 @@ h1 {
   padding: 2rem;
   size: 25rem;
   text-shadow: 4px 4px grey;
+  color: var(--secondary);
 }
 
+h2 {
+  padding: 1.25rem;
+  size: 25rem;
+  color: var(--secondary);
+  margin-left: -3%;
+}
 
 main {
   display: flex;
@@ -72,7 +79,7 @@ nav {
 .container {
   display: flex;
   flex-flow: column wrap;
-  align-content: flex-start;
+  align-content: center;
   align-items: center;
 }
 
@@ -80,7 +87,7 @@ nav {
 /* Blog CARDS */
 .blog-card {
   margin: 20px;
-  flex: 0 1 100px;
+  flex: 0 1 75px;
   padding: 5px;
   width: 100%;
   height: fit-content;
@@ -103,10 +110,16 @@ nav {
   border-bottom-style: solid;
 }
 
+.title-header{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content :space-between;
+}
+
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
-  text-align: center;
+  text-align: left;
   height: fit-content;
 }
 
@@ -129,7 +142,30 @@ a.button {
   color: initial;
 }
 
+
+hr.solid {
+  border: 3px solid  var(--primary);
+}
+
+
 /* Styling forms */
+
+.blog-post,
+.login-form,
+.signup-form
+{
+  border: 3px solid var(--primary);
+  border-radius: var(--border-radius);
+  border-style: solid;
+  border-width: medium;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.form-group {
+  margin: 8px 0px;
+}
+
 .textarea {
   display: block;
   width: 100%;
@@ -150,5 +186,38 @@ a.button {
   flex-direction: row;
   justify-content:space-evenly;
   align-items: center;
+  text-align: center;
 }
 
+.pst-btn {
+  background-color:var(--primary);
+  color:var(--tertiary);
+  text-align: center;
+  width: 12em;  
+  height: 2em;
+  font-size: 1.25rem;
+  margin: 2%;
+}
+
+.pst-btn:hover {
+  background-color:var(--primary);
+  text-decoration: none;
+  color: var(--secondary);
+  text-shadow: 2px 2px gray;
+}
+
+.new-post {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.new-post:hover {
+  background-color:var(--primary);
+  text-decoration: none;
+  color: var(--secondary);
+  text-shadow: 2px 2px gray;
+}

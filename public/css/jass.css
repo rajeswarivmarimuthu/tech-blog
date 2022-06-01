@@ -1116,6 +1116,8 @@
     display: block;
     width: 100%;
     margin: 0.625rem 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   
   form .form-input,

@@ -2,20 +2,17 @@
 const router = require('express').Router();
 const { Blog, User, Comments } = require('../models');
 const withAuth = require('../utils/auth');
+const format_date = require('../utils/helpers');
 
 
 // Pulling all blogs in the homepage irrespective of the log in status 
 router.get('/', async (req, res) => {
   try {
-    // Get all blogs and JOIN with user data
     const blogData = await Blog.findAll({
-    });
-
-    // Serialize data so the template can read it
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
+      include: {model:User, attributes:['name']}
+  });
+  const blogs = blogData.map((blog) => blog.get({ plain: true }));
+  res.render('homepage', { 
       blogs, 
       logged_in: req.session.logged_in 
     });
@@ -25,30 +22,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+//Create router to post new blog
 router.get('/blog/post',withAuth, (req,res)=> {
   res.render('blogform');
 })
 
-//router for querying a specific id
+//router for querying a specific blog with author, comments and commenter_id using id
 router.get('/blog/:id', withAuth, async (req, res) => {
- 
   try {
     console.log('Retrieve blog comments');
     const blogData = await Blog.findByPk(req.params.id,{
+        include:[{model:User, attributes: ['id','name']},],
         include : [
-          {model: Comments, attributes: ['comment','commenter_id'],
+        {model: Comments, attributes: ['comment','commenter_id', 'date_created'],
         include: [{model: User, attributes: ['id','name']}, ]
         }]
   
     });
-  
-    console.log('++ In comment vs update blog ++ ');
     
     const blog = blogData.get({ plain: true });
-    console.log(blog);
-
-    const user_comment = blog.comments;
-    console.log ('unpacking', user_comment);
 
     if (blog.author_id == req.session.user_id) {
       res.render('blogedit', {
@@ -62,6 +55,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
         });
       }
   } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -71,7 +65,8 @@ router.get('/dashboard',withAuth, async(req,res) => {
     const blogData = await Blog.findAll({
       where: {
         author_id: req.session.user_id
-      }
+      },
+      include: {model:User, attributes:['name']}
     });
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
@@ -80,7 +75,6 @@ router.get('/dashboard',withAuth, async(req,res) => {
       blogs, 
       logged_in: req.session.logged_in 
     });
-
   } catch (err) {
     res.status(500).json(err);
   }
@@ -94,6 +88,8 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
+
+
 
 // Setting up router for signup page 
 router.get('/signup', (req, res) => {

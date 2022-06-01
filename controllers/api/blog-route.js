@@ -1,3 +1,4 @@
+// import necessary packages and modules
 const router = require('express').Router();
 const { Blog, Comments } = require('../../models');
 const withAuth = require('../../utils/auth');
@@ -5,13 +6,11 @@ const withAuth = require('../../utils/auth');
 // router to create new BLOG
 router.post ('/', withAuth, async(req,res) => {
     try {
-
         const blogInput = {
           title :req.body.title,
           description: req.body.description,
           author_id: req.session.user_id
         }
-        
         const blogData = await Blog.create(blogInput);
         res.status(200).json(blogData);
     } catch (err){
@@ -40,7 +39,6 @@ router.put ('/:id', withAuth, async(req,res) => {
         description: req.body.description,
         author_id: req.session.user_id
       }
-      
       const blogData = await Blog.update(blogInput,
         {where :
           {id : req.params.id,
@@ -80,15 +78,14 @@ router.delete('/:id', withAuth, async (req, res) => {
 
   // router to add comments to a BLOG
 router.post('/:id/comment',withAuth, async(req,res) => {
-  try {
-    if (!req.body.description) {
+  try { 
+    if (req.body.description) {
       const commentInput = {
         comment :req.body.description,
         blog_id: req.body.blog_id,
         commenter_id: req.session.user_id
       }  
       const commentData = await Comments.create(commentInput);
-
       res.status(200).json(commentData);
     }
   }

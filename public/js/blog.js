@@ -15,6 +15,7 @@ const commentPostHandler = async (event) => {
         body: JSON.stringify({ description, blog_id }),
         headers: { 'Content-Type': 'application/json' }
     })
+    console.log ('response in submit comment', response)
     if (response.ok) {
         // If successful, redirect the browser to the dashboard page
         document.location.replace(`/blog/${blog_id}`);
