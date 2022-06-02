@@ -9,6 +9,7 @@
   --border-radius: 0.3rem;
 }
 
+/* Styling body */
 body {
   font-family: Arial;
   margin: 0;
@@ -19,6 +20,7 @@ body {
   background-color: var(--quatrinary);
 }
 
+/* Styling header */
 header {
   display: flex;
   flex-direction: column;
@@ -32,6 +34,7 @@ header {
 h1 {
   padding: 2rem;
   size: 25rem;
+  font-style: italic;
   text-shadow: 4px 4px grey;
   color: var(--secondary);
 }
@@ -49,7 +52,7 @@ main {
   flex-grow: 1;
 }
 
-
+/* Styling nav bar */
 nav {
   margin-left: -1%;
   margin-top: -1%;
@@ -116,6 +119,8 @@ nav {
   justify-content :space-between;
 }
 
+
+
 .card-body {
   padding: 2.5%;
   font-size: 1.4rem;
@@ -145,6 +150,11 @@ a.button {
 
 hr.solid {
   border: 3px solid  var(--primary);
+}
+
+.blog_creator {
+  font-size: 1.25rem;
+  font-style: italic;
 }
 
 

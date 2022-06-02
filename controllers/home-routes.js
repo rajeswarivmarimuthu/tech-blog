@@ -4,7 +4,6 @@ const { Blog, User, Comments } = require('../models');
 const withAuth = require('../utils/auth');
 const format_date = require('../utils/helpers');
 
-
 // Pulling all blogs in the homepage irrespective of the log in status 
 router.get('/', async (req, res) => {
   try {
@@ -14,7 +13,7 @@ router.get('/', async (req, res) => {
   const blogs = blogData.map((blog) => blog.get({ plain: true }));
   res.render('homepage', { 
       blogs, 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in
     });
   } 
   catch (err) {
@@ -46,12 +45,13 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     if (blog.author_id == req.session.user_id) {
       res.render('blogedit', {
         blog,
-        logged_in: req.session.logged_in
+        logged_in: req.session.logged_in,
+        isDashboard: false
       });
     } else { 
         res.render('blog', {
           blog,
-          logged_in: req.session.logged_in
+          logged_in: req.session.logged_in,
         });
       }
   } catch (err) {
@@ -70,10 +70,10 @@ router.get('/dashboard',withAuth, async(req,res) => {
     });
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    
     res.render('dashboard', { 
       blogs, 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in,
+      isDashboard: true
     });
   } catch (err) {
     res.status(500).json(err);
@@ -88,7 +88,6 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
-
 
 
 // Setting up router for signup page 
