@@ -191,6 +191,8 @@ hr.solid {
   background-color: white;
 }
 
+
+/* Styling buttons */
 .button-group {
   display: flex;
   flex-direction: row;
@@ -230,4 +232,8 @@ hr.solid {
   text-decoration: none;
   color: var(--secondary);
   text-shadow: 2px 2px gray;
+}
+
+.sign-up {
+  margin-left: 2%;
 }
